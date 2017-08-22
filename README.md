@@ -13,6 +13,6 @@
 • You might need 2 android device to demonstrate all the functions. 
 
 
-this app is based on MVVM architecture. With the publish of DataBinding framework in 2015, ..to be continued
+This app is based on MVVM architecture. With the help of DataBinding framework, view and view modle can be binded together(2-way binding), 
 
 To be honest, there are still lots of flaws need to be modified in this App.  I am trying to change his field from Environmental Eng. into IT industry, all my development skills are obtained from internet by myself. Hope this app will be helpful for my job hunting
