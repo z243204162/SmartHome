@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".View.RoomControlPanelActivity">
+
+    <data>
+        <variable
+            name="roomControlPanelActivityDeviceControlerViewModel"
+            type="com.example.zeyupeng.smarthome.UI.ViewModel.RoomControlPanelActivityDeviceControlerViewModel">
+        </variable>
+        <variable
+            name="controlerType"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.ControlerType">
+        </variable>
+        <variable
+            name="productStatus"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.ProductStatus">
+        </variable>
+        <variable
+            name="planDate"
+            type="com.example.zeyupeng.smarthome.Model.MyPlans.PlanDate">
+        </variable>
+        <variable
+            name="lockStatus"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.Access.LockStatus">
+        </variable>
+
+        <import
+            type="android.view.View">
+        </import>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        app:cardBackgroundColor="@color/cardViewBackground_Light"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:divider="@drawable/mydivider"
+                android:dividerPadding="10dp"
+                android:orientation="vertical"
+                android:showDividers="end">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="3dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:setImageResource="@{roomControlPanelActivityDeviceControlerViewModel.imageRC}"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingStart="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{roomControlPanelActivityDeviceControlerViewModel.custumNameRC}"
+                                android:textColor="@color/cardViewText_DeviceName"
+                                android:textSize="20sp"
+                                android:textStyle="bold"/>
+
+                            <android.support.v7.widget.SwitchCompat
+                                android:id="@+id/switch1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:onCheckedChanged="@{roomControlPanelActivityDeviceControlerViewModel.deviceSwitch}"
+                                android:setChecked="@{roomControlPanelActivityDeviceControlerViewModel.statusRC.equals(productStatus.ON)?true:false}"
+                                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.SWITCH)?View.VISIBLE : View.GONE}">
+                            </android.support.v7.widget.SwitchCompat>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="6dp"
+                            android:textColor="@color/cardViewText_1"
+                            android:text="@{roomControlPanelActivityDeviceControlerViewModel.productNameRC}"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="6dp"
+                            android:textColor="@{roomControlPanelActivityDeviceControlerViewModel.statusRC.equals(productStatus.ON)?@color/cardViewText_ON:@color/cardViewText_1}"
+                            android:text="@{roomControlPanelActivityDeviceControlerViewModel.statusRC}"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="6dp"
+                            android:textStyle="italic"
+                            android:textSize="12sp"
+                            android:textColor="@color/cardViewText_1"
+                            android:text="@{roomControlPanelActivityDeviceControlerViewModel.descriptionRC}"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:onCheckedChanged="@{roomControlPanelActivityDeviceControlerViewModel.enableNotification}"
+                                android:setChecked="@{roomControlPanelActivityDeviceControlerViewModel.notificationPermitRC?true:false}"
+                                android:text="Notification"
+                                android:textColor="@color/cardViewText_1"
+                                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.NOTIFICATION_SENDER)?View.VISIBLE : View.GONE}"/>
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.NOTIFICATION_SENDER)?View.GONE : View.INVISIBLE}"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:gravity="right">
+
+                                <ImageButton
+                                    android:id="@+id/button8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.deleteDevice}"
+                                    android:src="@mipmap/rubbish"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+
+                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.MODE_SWITCH)?View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textColor="@color/cardViewText_1"
+                    android:text="@{roomControlPanelActivityDeviceControlerViewModel.modeRC}"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:entries="@{roomControlPanelActivityDeviceControlerViewModel.modeOptionsRC}"
+                    android:onItemSelected="@{roomControlPanelActivityDeviceControlerViewModel.chooseMode}">
+
+                </android.support.v7.widget.AppCompatSpinner>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.confirmMode}"
+                    android:src="@mipmap/ok"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.ADJUSTER)?View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/cardViewText_1"
+                    android:text="@{roomControlPanelActivityDeviceControlerViewModel.adjustableValueNameRC+`  `+String.valueOf(roomControlPanelActivityDeviceControlerViewModel.adjustableValueRC)}"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="@{roomControlPanelActivityDeviceControlerViewModel.maxValueRC}"
+                    android:onStopTrackingTouch="@{roomControlPanelActivityDeviceControlerViewModel.stopAdjusting}"
+                    android:setProgress="@{roomControlPanelActivityDeviceControlerViewModel.adjustableValueRC}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.TIMER)?View.VISIBLE : View.GONE}">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.SUN}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.MON}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.TUE}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.WED}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.THU}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.FRI}"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectDate}"
+                            android:text="@{planDate.SAT}"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/cardViewText_ON"
+                        android:text="@{roomControlPanelActivityDeviceControlerViewModel.hourRC+`:`+roomControlPanelActivityDeviceControlerViewModel.minuteRC}"/>
+
+                    <ImageButton
+                        android:padding="6dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/clock"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectTime}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/cardViewText_1"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="Action:"/>
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_weight="3">
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectPlanTurnOnAction}"
+                            android:text="Turn on"
+                            android:textSize="13sp"/>
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/cardViewText_1"
+                            android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.selectPlanTurnOffAction}"
+                            android:text="Turn off"
+                            android:textSize="13sp"/>
+                    </RadioGroup>
+
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.addPlan}"
+                        android:src="@mipmap/ok"/>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.DOOR_LOCK)?View.VISIBLE : View.GONE}">
+
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Password:"
+                    android:textColorHint="@color/cardViewText_1"
+                    android:inputType="textPassword"
+                    android:onTextChanged="@{roomControlPanelActivityDeviceControlerViewModel.inputPassword}"
+                    android:text="@{roomControlPanelActivityDeviceControlerViewModel.passwordInputRC}"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onCheckedChanged="@{roomControlPanelActivityDeviceControlerViewModel.lockSwitch}"
+                    android:setChecked="@{roomControlPanelActivityDeviceControlerViewModel.lockStatusRC.equals(lockStatus.LOCKED)?true:false}"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.startCardSimulation}"
+                    android:src="@mipmap/wifi"
+                    android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.controlTypeRC.contains(controlerType.NFC_DOOR_LOCK)?View.VISIBLE : View.INVISIBLE}"/>
+
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.enterResetPasswordMode}"
+                    android:src="@mipmap/padlock"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="10dp"
+                android:paddingStart="10dp"
+                android:visibility="@{roomControlPanelActivityDeviceControlerViewModel.resetPasswordModeRC?View.VISIBLE : View.GONE}">
+
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:ems="10"
+                    android:hint="New Password:"
+                    android:textColorHint="@color/cardViewText_1"
+                    android:inputType="textPassword"
+                    android:onTextChanged="@{roomControlPanelActivityDeviceControlerViewModel.inputNewPassword}"
+                    android:text="@{roomControlPanelActivityDeviceControlerViewModel.newPasswordRC}"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{roomControlPanelActivityDeviceControlerViewModel.confirmRestePassword}"
+                    android:src="@mipmap/ok"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>
+

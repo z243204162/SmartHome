@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.zeyupeng.smarthome.View.RoomControlPanelActivity">
+    <data>
+        <variable
+            name="roomControlPanelActivityHeaderViewModel"
+            type="com.example.zeyupeng.smarthome.UI.ViewModel.RoomControlPanelActivityHeaderViewModel">
+        </variable>
+
+        <variable
+            name="deviceData"
+            type="com.example.zeyupeng.smarthome.Model.DataOnMobile.DeviceDataOnMobile">
+        </variable>
+        <import
+            type="android.view.View">
+        </import>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/background_3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="4.5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1.5"
+                android:layout_marginBottom="6dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:gravity="start"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/cardViewText_DeviceName"
+                    android:text="@{roomControlPanelActivityHeaderViewModel.roomNameMH}"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:paddingRight="16dp"
+                    android:text="@{`HUB: `+roomControlPanelActivityHeaderViewModel.hubStatusMH}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:divider="@drawable/mydivider"
+                android:showDividers="middle"
+                android:dividerPadding="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:src="@mipmap/thermometer"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:text="@{roomControlPanelActivityHeaderViewModel.roomTemperatureMH+` °C`}"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:src="@mipmap/humidity"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:layout_weight="1"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:text="@{roomControlPanelActivityHeaderViewModel.roomHumidityMH+` %`}"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:divider="@drawable/mydivider"
+                        android:dividerPadding="16dp"
+                        android:showDividers="middle"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="Cooling and Heating"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_ACandHeating_room_control_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:divider="@drawable/mydivider"
+                        android:dividerPadding="16dp"
+                        android:showDividers="middle"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="Lighting"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_Lighting_room_control_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:divider="@drawable/mydivider"
+                        android:dividerPadding="16dp"
+                        android:showDividers="middle"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="Shading"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_Shading_room_control_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:divider="@drawable/mydivider"
+                        android:dividerPadding="16dp"
+                        android:showDividers="middle"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="Access"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_Access_room_control_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:divider="@drawable/mydivider"
+                        android:dividerPadding="16dp"
+                        android:showDividers="middle"
+                        android:layout_marginTop="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="16dp"
+                            android:text="Cooking"
+                            android:textStyle="bold"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_Cooking_room_control_panel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp">
+                        </android.support.v7.widget.RecyclerView>
+                    </LinearLayout>
+
+
+
+                    <ImageButton
+                        android:id="@+id/button5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:src="@mipmap/add_button"
+                        android:onClick="@{roomControlPanelActivityHeaderViewModel.addDevice}"/>
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"/>
+                </LinearLayout>
+
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
+

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".View.HubControlPanelActivity">
+
+    <data>
+        <variable
+            name="hubControlPanelActivityDeviceSimulatorViewModel"
+            type="com.example.zeyupeng.smarthome.UI.ViewModel.HubControlPanelActivityDeviceSimulatorViewModel">
+        </variable>
+        <variable
+            name="productStatus"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.ProductStatus">
+        </variable>
+        <variable
+            name="controlerType"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.ControlerType">
+        </variable>
+        <variable
+            name="lockStatus"
+            type="com.example.zeyupeng.smarthome.Model.MyDevices.Access.LockStatus">
+        </variable>
+        <import
+            type="android.view.View">
+        </import>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        app:cardBackgroundColor="@color/cardViewBackground_Light"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:setImageResource="@{hubControlPanelActivityDeviceSimulatorViewModel.imageHC}"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    android:paddingStart="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/cardViewText_DeviceName"
+                            android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.custumNameHC}"/>
+
+                        <android.support.v7.widget.SwitchCompat
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onCheckedChanged="@{hubControlPanelActivityDeviceSimulatorViewModel.deviceSwitch}"
+                            android:visibility="@{hubControlPanelActivityDeviceSimulatorViewModel.controlType.contains(controlerType.SWITCH)?View.VISIBLE : View.GONE}"
+                            android:setChecked ="@{hubControlPanelActivityDeviceSimulatorViewModel.statusHC.equals(productStatus.ON)?true:false}">
+
+                        </android.support.v7.widget.SwitchCompat>
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/cardViewText_1"
+                        android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.productNameHC}"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@{hubControlPanelActivityDeviceSimulatorViewModel.statusHC.equals(productStatus.ON)?@color/cardViewText_ON:@color/cardViewText_1}"
+                        android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.statusHC}"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/cardViewText_1"
+                        android:textStyle="italic"
+                        android:textSize="12sp"
+                        android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.descriptionHC}"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:orientation="horizontal"
+                android:visibility="@{hubControlPanelActivityDeviceSimulatorViewModel.controlType.contains(controlerType.MODE_SWITCH)?View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/cardViewText_1"
+                    android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.modeHC}"/>
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@{hubControlPanelActivityDeviceSimulatorViewModel.modeOptionsHC}"
+                    android:onItemSelected="@{hubControlPanelActivityDeviceSimulatorViewModel.chooseMode}">
+
+
+
+                </android.support.v7.widget.AppCompatSpinner>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@mipmap/ok"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{hubControlPanelActivityDeviceSimulatorViewModel.confirmMode}"/>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="6dp"
+                android:visibility="@{hubControlPanelActivityDeviceSimulatorViewModel.controlType.contains(controlerType.ADJUSTER)?View.VISIBLE : View.GONE}">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/cardViewText_1"
+                    android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.adjustableValueNameHC+`  `+String.valueOf(hubControlPanelActivityDeviceSimulatorViewModel.adjustableValueHC)}"/>
+
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="@{hubControlPanelActivityDeviceSimulatorViewModel.maxValueHC}"
+                    android:onStopTrackingTouch="@{hubControlPanelActivityDeviceSimulatorViewModel.stopAdjusting}"
+                    android:setProgress="@{hubControlPanelActivityDeviceSimulatorViewModel.adjustableValueHC}"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="@{hubControlPanelActivityDeviceSimulatorViewModel.controlType.contains(controlerType.DOOR_LOCK)?View.VISIBLE : View.GONE}">
+
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:layout_weight="4"
+                    android:hint="Password:"
+                    android:textColorHint="@color/cardViewText_1"
+                    android:text="@{hubControlPanelActivityDeviceSimulatorViewModel.passwordInputHC}"
+                    android:onTextChanged="@{hubControlPanelActivityDeviceSimulatorViewModel.inputPassword}"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@mipmap/wifi"
+                    android:background="@android:color/transparent"
+                    android:visibility="@{hubControlPanelActivityDeviceSimulatorViewModel.controlType.contains(controlerType.NFC_DOOR_LOCK)?View.VISIBLE : View.INVISIBLE}"
+                    android:onClick="@{hubControlPanelActivityDeviceSimulatorViewModel.startCardReader}"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onCheckedChanged="@{hubControlPanelActivityDeviceSimulatorViewModel.lockSwitch}"
+                    android:setChecked ="@{hubControlPanelActivityDeviceSimulatorViewModel.lockStatusHC.equals(lockStatus.LOCKED)?true:false}"/>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</layout>
+

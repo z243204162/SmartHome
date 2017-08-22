@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SmartHome</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="toolbar_main_addroom">Add a new room</string>
+
+    <string name="service_name">CardEmulation Sample</string>
+    <string name="card_title">Sample Loyalty Card</string>
+    <string name="account_number">Account Number</string>
+</resources>

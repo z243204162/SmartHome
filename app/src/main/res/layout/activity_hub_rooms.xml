@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+        <data>
+                <variable
+                    name="hubRoomData"
+                    type="com.example.zeyupeng.smarthome.Model.DataOnHub.RoomDataOnHub">
+                </variable>
+                <import
+                    type="android.view.View">
+                </import>
+
+        </data>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@mipmap/background_3"
+            tools:context="com.example.zeyupeng.smarthome.View.HubRoomsActivity">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="10dp"
+                    android:gravity="start"
+                    android:text="My Rooms"
+                    android:textStyle="bold"
+                    android:textSize="35sp"
+                    android:layout_marginBottom="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:gravity="start"
+                    android:text="Home Simulator"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/hub_recycler_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="10dp"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="there is no room"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="@{hubRoomData.getInstance.getRoomDataMap.size()==0?View.VISIBLE : View.GONE}"/>
+
+
+        </LinearLayout>
+</layout>
+
+
+

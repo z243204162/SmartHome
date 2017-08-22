@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "796415127418",
+    "firebase_url": "https://smarthome-9ef54.firebaseio.com",
+    "project_id": "smarthome-9ef54",
+    "storage_bucket": "smarthome-9ef54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796415127418:android:4666dab2f6106204",
+        "android_client_info": {
+          "package_name": "com.example.zeyupeng.smarthome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796415127418-eivipadd3l1qcbrgaf555b672373a6kj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGDUtqiYFh_ecHW3Cacdyilg4K8aJi4B0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

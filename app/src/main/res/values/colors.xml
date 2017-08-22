@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="cardViewText_1">#729D9A</color>
+    <color name="cardViewText_Light">#B1E1DE</color>
+    <color name="cardViewText_Dark">#374B48</color>
+    <color name="cardViewText_DeviceName">#C09906</color>
+    <color name="cardViewText_ON">#00FF00</color>
+
+    <color name="cardViewBackground">#b0000000</color>
+    <color name="cardViewBackground_Light">#78000000</color>
+
+
+
+
+</resources>

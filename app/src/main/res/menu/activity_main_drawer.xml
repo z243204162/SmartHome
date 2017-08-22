@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@mipmap/home"
+            android:title="Home Simulator"/>
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@mipmap/controls"
+            android:title="Setting"/>
+    </group>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@mipmap/logout"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
+</menu>

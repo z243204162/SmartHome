@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".View.MainActivity">
+    <data>
+        <variable
+            name="mainActivityViewModel"
+            type="com.example.zeyupeng.smarthome.UI.ViewModel.MainActivityViewModel">
+        </variable>
+        <variable
+            name="roomData"
+            type="com.example.zeyupeng.smarthome.Model.DataOnMobile.RoomDataOnMobile">
+        </variable>
+        <variable
+            name="planData"
+            type="com.example.zeyupeng.smarthome.Model.DataOnMobile.PlanDataOnMobile">
+        </variable>
+        <import
+            type="android.view.View">
+        </import>
+    </data>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+        <!-- The item_toolbar_main content view -->
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefreshLayout_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@mipmap/background_3">
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:title="SmartHome"
+                        android:titleTextColor="@color/cardViewText_Dark"
+                        android:background="#3F51B5"
+                        android:layout_marginBottom="2dp"
+                        app:popupTheme="@style/AppTheme.PopupOverlay"
+                        android:elevation="4dp">
+                    </android.support.v7.widget.Toolbar>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="6dp"
+                            android:gravity="start"
+                            android:text="My Room"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:layout_weight="3"/>
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:textStyle="bold"
+                            android:gravity="right"
+                            android:paddingRight="16dp"
+                            android:paddingTop="3dp"
+                            android:textSize="15sp"
+                            android:layout_weight="1"
+                            android:text="@{`HUB: ` +mainActivityViewModel.hubStatusMain}"/>
+
+
+                    </LinearLayout>
+
+
+                    <android.support.design.widget.CoordinatorLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_room"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+
+                            android:background="@android:color/transparent"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="there is no room"
+                            android:background="@android:color/transparent"
+                            android:visibility="@{roomData.getInstance.roomDataMap.size()==0?View.VISIBLE : View.GONE}"/>
+
+                        <ImageButton
+                            android:id="@+id/floatingActionButton3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:paddingRight="28dp"
+                            android:paddingBottom="16dp"
+                            android:background="@android:color/transparent"
+                            android:onClick="@{mainActivityViewModel.addRoom}"
+                            android:src="@mipmap/add_button"/>
+
+
+                    </android.support.design.widget.CoordinatorLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:gravity="start"
+                        android:text="My Plan"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:background="@android:color/transparent"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="there is no plan"
+
+                            android:visibility="@{planData.getInstance.getPlanDataMap.size()==0?View.VISIBLE : View.GONE}"/>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_plans"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="10dp"
+                            android:visibility="@{planData.getInstance.getPlanDataMap.size()==0?View.GONE : View.VISIBLE}">
+                        </android.support.v7.widget.RecyclerView>
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </FrameLayout>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view_main"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer">
+        </android.support.design.widget.NavigationView>
+    </android.support.v4.widget.DrawerLayout>
+</layout>

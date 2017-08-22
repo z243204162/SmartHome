@@ -1,0 +1,99 @@
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="hubRoomActivityRoomViewModel"
+            type="com.example.zeyupeng.smarthome.UI.ViewModel.HubRoomsActivityRoomViewModel"/>
+    </data>
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView_item_room_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        app:cardBackgroundColor="@color/cardViewBackground_Light"
+        app:cardElevation="0dp"
+        android:onClick="@{hubRoomActivityRoomViewModel.onClick}">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/cardViewText_DeviceName"
+                android:text="@{hubRoomActivityRoomViewModel.roomNameHub}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:src="@mipmap/thermometer_room"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/room_temp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/cardViewText_1"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingStart="5dp"
+                        android:layout_weight="1"
+                        android:text="@{hubRoomActivityRoomViewModel.roomTemperatureHub+` °C`}"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:src="@mipmap/humidity_room"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/room_humidity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/cardViewText_1"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:paddingStart="5dp"
+                        android:layout_weight="1"
+                        android:text="@{hubRoomActivityRoomViewModel.roomHumidityHub+` %`}"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</layout>
+
