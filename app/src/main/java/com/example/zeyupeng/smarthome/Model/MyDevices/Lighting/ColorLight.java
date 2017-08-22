@@ -113,6 +113,6 @@ public class ColorLight extends AbstractDevice implements Switch , ModeSwitch{
        this.getControlerType().add(ControlerType.MODE_SWITCH);
     }
 
-    
+
 
 }
