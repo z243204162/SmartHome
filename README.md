@@ -13,7 +13,15 @@
 
 • You might need 2 android device to demonstrate all the functions. 
 
-![screenshot_20170821-214453](https://user-images.githubusercontent.com/22565548/29571185-8f62e528-8726-11e7-87f2-81c9e8349208.png)
+![screenshot_20170821-214508](https://user-images.githubusercontent.com/22565548/29571276-c58f88cc-8726-11e7-95dc-ee03f90dd132.png)
+
+![screenshot_20170821-214546](https://user-images.githubusercontent.com/22565548/29571284-c8c18a40-8726-11e7-9952-4027e94fcd08.png)
+
+![screenshot_20170821-215616](https://user-images.githubusercontent.com/22565548/29571291-ceb097ac-8726-11e7-91ef-3d2e9983b7cb.png)
+
+![screenshot_20170821-215626](https://user-images.githubusercontent.com/22565548/29571295-d2dd9834-8726-11e7-819f-9f6d91eab0ea.png)
+
+![screenshot_20170821-215736](https://user-images.githubusercontent.com/22565548/29571300-d7046eb0-8726-11e7-8dcd-4bd28ce6c2b5.png)
 
 
 
