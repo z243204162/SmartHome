@@ -23,13 +23,14 @@ mobile application：
 
 ![screenshot_20170821-214546](https://user-images.githubusercontent.com/22565548/29571284-c8c18a40-8726-11e7-9952-4027e94fcd08.png)
 
-![screenshot_20170821-215616](https://user-images.githubusercontent.com/22565548/29571291-ceb097ac-8726-11e7-91ef-3d2e9983b7cb.png)
 
 
 
 
 
 Hub simulator(included in app)：
+
+![screenshot_20170821-215616](https://user-images.githubusercontent.com/22565548/29571291-ceb097ac-8726-11e7-91ef-3d2e9983b7cb.png)
 
 ![screenshot_20170821-215626](https://user-images.githubusercontent.com/22565548/29571295-d2dd9834-8726-11e7-819f-9f6d91eab0ea.png)
 
